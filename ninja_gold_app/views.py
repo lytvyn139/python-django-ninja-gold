@@ -14,10 +14,6 @@ def index(request):
         request.session['totalGold'] = 0
     if 'activitylog' not in request.session:
         request.session['activitylog'] = []
-
-    # if 'time_log' not in request.session:
-    #     request.session['time_log'] = []
-
     return render(request, "index.html", context)
 
 def process(request):
@@ -32,29 +28,13 @@ def process(request):
         #print(f"went to farm and earned {goldearned}")
         activityString = f"went to farm and earned {goldearned}"
         request.session['activitylog'].append(activityString)
-
-
-
-
-        # request.session['time_log'] += goldearned
-        # request.session['time_log'].append(activityString)
-
-
-
-
         
     # CAVE
     elif request.POST['location'] == 'cave':
         goldearned = random.randint(15,25)
         request.session['totalGold'] += goldearned
-        if goldearned < 0:
-            #print(f"went to cave and lost {abs(goldearned)}")
-            activityString = f"went to cave and lost {abs(goldearned)}"
-            request.session['activitylog'].append(activityString)
-        else:
-            #print(f"went to cave and earned {goldearned}")
-            activityString = f"went to cave and earned {goldearned}"
-            request.session['activitylog'].append(activityString)
+        activityString = f"went to cave and earned {goldearned}"
+        request.session['activitylog'].append(activityString)
 
     # HOUSE
     elif request.POST['location'] == 'house':
@@ -79,8 +59,9 @@ def process(request):
             activityString = f"went to casino and earned {goldearned}"
             request.session['activitylog'].append(activityString)
 
-    if request.session['totalGold'] < 0:
-        activityString = f"YOU LOST IT ALL !"
+    # if request.session['totalGold'] < 0:
+    #     activityString = f"YOU LOST IT ALL !"
+
 
     return redirect("/")
 

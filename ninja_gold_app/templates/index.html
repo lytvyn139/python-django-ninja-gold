@@ -71,15 +71,14 @@
 </section>
     
 
-
+<h1>Activity log:</h1>
     <div class="container-bottom">
-        <h1>Activity log:</h1>
         <div class="activities">
             {% for activity in request.session.activitylog %}
                 {% if 'earned' in activity %}
-                <p class=output-green>{{ current_time }} {{activity}}</p>
+                <p class=output-green>{{ current_time }} {{activity}} </p>  
                 {% else %}
-                <p class=output-red>{{ current_time }} {{activity}}</p>
+                <p class=output-red>{{ current_time }} {{activity}} </p> 
                 {% endif %}
             {% endfor %}
         </div>

@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    line-height: 1.5;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #282828;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 1em;
+}
+
+.col {
+    padding-bottom: 1.25rem;
+    color: #424346;
+    background: #FFF;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .1);
+}
+
+.col h2,
+.col p {
+    margin: 0;
+    padding: 0 1.25rem
+}
+
+.col h2 {
+    margin: .75em 0 .5em;
+    text-align: center;
+}
+
+.col p {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    font-size: 0.9em;
+}
+
+/* BUTTONS */
+.col .btn {
+    margin: 0 auto;
+}
+
+input {
+    margin: 0 auto;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    background: black;
+    color: white;
+    text-transform: uppercase;
+    padding: 1rem 1rem;
+    font-weight: bold;
+}
+
+input:hover {
+    background: grey;
+}
+
+#reset-btn {
+    margin: 0 auto;
+    cursor: pointer;
+    border: 0;
+    background: red;
+    color: white;
+    text-transform: uppercase;
+    border-radius: 5px;
+    padding: 1rem 1rem;
+    font-weight: bold;
+
+}
+
+.thumbnail {
+    line-height: 0;
+    overflow: hidden;
+}
+
+.thumbnail img {
+    transition: all .275s;
+}
+
+.thumbnail:hover img,
+.thumbnail:focus img {
+    filter: blur(2px) saturate(0);
+}
+
+.flex .col img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 1000px;
+    max-width: 100%;
+    margin: auto;
+    height: 400px;
+}
+
+.flex .col {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 300px;
+    margin: 1em 0.5em;
+}
+
+.flex .col .btn {
+    align-self: flex-start;
+    margin-top: auto;
+}
+
+.container-bottom {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.activities {
+    height: 200px;
+    overflow: auto;
+} 
+
+.output-red {
+    color: red;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    line-height: .5rem;
+}
+
+.output-green {
+    color: greenyellow;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    line-height: .5rem;
+}
+
+@media (max-width: 900px) {
+    .flex {
+        flex-wrap: wrap;
+    }
+}

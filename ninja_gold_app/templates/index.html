@@ -10,8 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 >Your gold: {{ request.session.totalGold }} <img src="{% static 'img/gold.png' %}" /> <a href="/reset"> <button id="reset-btn"> Reset </button> </a>   </h1>
-        
+        <h1>Your gold: {{ request.session.total_gold }} <img src="{% static 'img/gold.png' %}" />  <span>(goal: 200)</span>  <a href="/reset_all"> <button id="reset-btn"> Reset </button> </a>    </h1>
     </div>
 
     <div class="flex">
@@ -47,7 +46,7 @@
                 <img src="{% static 'img/house.png' %}" alt="Pixel house">
             </a>
             <h2>Old House</h2>
-            <p>Dare to go inside? earn or lose up to -25/+10 gold</p>
+            <p>Dare to go inside? earn or lose up to -25/+10 gold.</p>
             <form class="btn" action="/process_money" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="location" value="house">
@@ -60,7 +59,7 @@
                 <img src="{% static 'img/casino.png' %}" alt="Pixel casino">
             </a>
             <h2>Casino</h2>
-            <p>Risk it all player !!! Win or loose up to -50/+50 gold</p>
+            <p>Risk it all player !!! Win or loose up to -50/+50 gold.</p>
             <form class="btn"action="/process_money" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="location" value="casino">
@@ -74,7 +73,7 @@
 <h1>Activity log:</h1>
     <div class="container-bottom">
         <div class="activities">
-            {% for activity in request.session.activitylog %}
+            {% for activity in request.session.activity_log %}
                 {% if 'earned' in activity %}
                 <p class=output-green>{{ current_time }} {{activity}} </p>  
                 {% else %}
@@ -83,8 +82,6 @@
             {% endfor %}
         </div>
     </div>
-
-
 
 </body>
 </html>

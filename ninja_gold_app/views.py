@@ -86,7 +86,7 @@ def process(request):
         else:
             activityString = f"went to casino and earned {goldearned}"
             request.session['activity_log'].append(activityString)
-            if request.session['total_gold'] >= 50:
+            if request.session['total_gold'] >= 200:
                 win()
 
     return redirect("/")

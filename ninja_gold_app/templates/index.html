@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,22 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
 </head>
+
 <body>
     <div class="container">
-        <h1>Your gold: {{ request.session.total_gold }} <img src="{% static 'img/gold.png' %}" />  <span>(goal: 200)</span>  <a href="/reset_all"> <button id="reset-btn"> Reset </button> </a>    </h1>
+        <h1>Your gold: {{ request.session.total_gold }} <img src="{% static 'img/gold.png' %}" /> 
+            <span>(goal: 200)</span> <a href="/reset_all"> <button id="reset-btn"> Reset </button> </a> </h1>
     </div>
 
     <div class="flex">
         <div class="col">
             <a class="thumbnail" href="#">
-                <img src="{% static 'img/farm.png' %}"  alt="Pixel farm">
+                <img src="{% static 'img/farm.png' %}" alt="Pixel farm">
             </a>
             <h2>Farm</h2>
             <p>ain't much, but honest work, earn between 5-10 gold.</p>
-            
+            <h2 class="phone-text">Farm (+5/+10 gold)</h2>
+
             <form class="btn" action="/process_money" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="location" value="farm">
@@ -30,14 +34,16 @@
 
         <div class="col">
             <a class="thumbnail" href="#">
-                <img src="{% static 'img/cave.png' %}"  alt="Pixel cave">
+                <img src="{% static 'img/cave.png' %}" alt="Pixel cave">
             </a>
             <h2>Cave</h2>
             <p>It's scary, but totally worth it! earn between 15-25 gold.</p>
+            <h2 class="phone-text">Cave (+15/+25 gold)</h2>
+
             <form class="btn" action="/process_money" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="location" value="cave">
-                <input type="submit" value="Find Gold!" >
+                <input type="submit" value="Find Gold!">
             </form>
         </div>
 
@@ -47,41 +53,47 @@
             </a>
             <h2>Old House</h2>
             <p>Dare to go inside? earn or lose up to -25/+10 gold.</p>
+            <h2 class="phone-text">Old House (-25/+10 gold)</h2>
+
             <form class="btn" action="/process_money" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="location" value="house">
-                <input type="submit" value="Find Gold!" >
+                <input type="submit" value="Find Gold!">
             </form>
         </div>
 
         <div class="col">
-        <a class="thumbnail" href="#">
+            <a class="thumbnail" href="#">
                 <img src="{% static 'img/casino.png' %}" alt="Pixel casino">
             </a>
             <h2>Casino</h2>
             <p>Risk it all player !!! Win or loose up to -50/+50 gold.</p>
-            <form class="btn"action="/process_money" method="post">
+            <h2 class="phone-text">Casino (-50/+50 gold)</h2>
+
+            <form class="btn" action="/process_money" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="location" value="casino">
-                <input type="submit" value="Find Gold!" >
+                <input type="submit" value="Find Gold!">
             </form>
         </div>
     </div>
-</section>
-    
+    </section>
 
-<h1>Activity log:</h1>
+
+    <h1 class="activity-header">Activity log:</h1>
     <div class="container-bottom">
         <div class="activities">
             {% for activity in request.session.activity_log %}
-                {% if 'earned' in activity %}
-                <p class=output-green>{{ current_time }} {{activity}} </p>  
-                {% else %}
-                <p class=output-red>{{ current_time }} {{activity}} </p> 
-                {% endif %}
+            {% if 'earned' in activity %}
+            <p class=output-green>{{ current_time }} {{activity}} </p>
+            {% else %}
+            <p class=output-red>{{ current_time }} {{activity}} </p>
+            {% endif %}
             {% endfor %}
         </div>
     </div>
 
+
 </body>
+
 </html>

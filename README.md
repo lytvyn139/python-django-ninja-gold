@@ -22,10 +22,7 @@ must have pyton 3+, django 2.2.4+
 python3 manage.py runserver
 #open http://127.0.0.1:8000/
 ```
-
-## Deployment
-
-made with Heroku
+press shift+f5 if you have problems with css
 
 ## Built With
 * Python
